@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comparador RGB a RAL</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <section class="panel" aria-label="Entrada de color">
+        <h1>Comparador RGB a RAL</h1>
+        <p class="intro">
+          Introduce un color RGB y compara su similitud con una tabla interna de referencias RAL orientativa usando CIELAB y Delta E 2000.
+        </p>
+        <p class="notice">
+          Aviso: este resultado es una aproximación orientativa. La equivalencia exacta puede variar según la fuente, la pantalla y la calibración.
+        </p>
+
+        <div class="form-grid">
+          <div class="input-row">
+            <label class="field">
+              <span>Hex</span>
+              <input id="hex" type="text" inputmode="text" placeholder="#00385C" value="#2563EB" />
+            </label>
+            <label class="field">
+              <span>R</span>
+              <input id="red" type="number" min="0" max="255" value="37" />
+            </label>
+            <label class="field">
+              <span>G</span>
+              <input id="green" type="number" min="0" max="255" value="99" />
+            </label>
+            <label class="field">
+              <span>B</span>
+              <input id="blue" type="number" min="0" max="255" value="235" />
+            </label>
+          </div>
+
+          <div class="actions">
+            <button id="applyButton" class="primary" type="button">Aplicar color</button>
+          </div>
+
+          <div id="errorBox" class="error" role="alert"></div>
+        </div>
+
+        <div class="preview-card">
+          <div id="previewSwatch" class="preview-swatch" aria-hidden="true"></div>
+          <div class="preview-info">
+            <div class="preview-label">Color introducido</div>
+            <div id="previewValue" class="preview-value">#2563EB</div>
+            <div id="previewRgb" class="preview-value">RGB(37, 99, 235)</div>
+            <div class="preview-label">RGB</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="results-panel" aria-label="Comparación RAL">
+        <h2>Mejor coincidencia</h2>
+        <div class="source-label">Referencia basada en RAL Classic</div>
+        <div id="resultsList" class="results-list"></div>
+
+        <div class="secondary-list" aria-label="Segundas y terceras opciones">
+          <div class="secondary-item">
+            <div>
+              <strong id="highestMatchName">RAL 5015</strong>
+              <div class="result-rgb">Referencia principal</div>
+            </div>
+            <div id="highestMatchDelta" class="result-delta">0.00 ΔE00</div>
+            <div id="highestMatchBadge" class="result-badge exact">Exacta</div>
+          </div>
+          <div id="secondaryList"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
