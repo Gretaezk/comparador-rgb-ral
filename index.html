@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>Comparador RGB a RAL</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="panel input-panel" aria-label="Entrada de color">
+        <div class="panel-head">
+          <p class="eyebrow">Comparador industrial</p>
+          <h1>Comparador RGB a RAL Classic</h1>
+          <p class="intro">
+            Introduce un color RGB o HEX y compara su similitud con una referencia orientativa basada en RAL Classic usando CIELAB y Delta E 2000.
+          </p>
+        </div>
+
+        <div class="control-grid">
+          <label class="field field-hex">
+            <span>HEX</span>
+            <input id="hex" type="text" inputmode="text" placeholder="#00385C" value="#2563EB" />
+          </label>
+
+          <div class="rgb-grid">
+            <label class="field">
+              <span>R</span>
+              <input id="red" type="number" min="0" max="255" value="37" />
+            </label>
+            <label class="field">
+              <span>G</span>
+              <input id="green" type="number" min="0" max="255" value="99" />
+            </label>
+            <label class="field">
+              <span>B</span>
+              <input id="blue" type="number" min="0" max="255" value="235" />
+            </label>
+          </div>
+
+          <div class="actions">
+            <button id="applyButton" class="primary" type="button">Aplicar color</button>
+            <button id="themeToggle" class="secondary" type="button" aria-pressed="false">Modo oscuro</button>
+            <button id="installButton" class="secondary" type="button" hidden>Instalar app</button>
+          </div>
+        </div>
+
+        <div class="preview-card">
+          <div id="previewSwatch" class="preview-swatch" aria-hidden="true"></div>
+          <div class="preview-details">
+            <div class="preview-pill">Vista previa</div>
+            <div class="metric-row">
+              <div class="metric">
+                <span class="metric-label">RGB</span>
+                <div id="previewRgb" class="metric-value">RGB(37, 99, 235)</div>
+              </div>
+              <div class="metric">
+                <span class="metric-label">HEX</span>
+                <div id="previewHex" class="metric-value">#2563EB</div>
+              </div>
+            </div>
+            <div id="previewValue" class="preview-value">#2563EB</div>
+          </div>
+        </div>
+
+        <div class="notice-card">
+          La equivalencia RGB a RAL es orientativa y puede variar según la fuente, la pantalla, la iluminación y la calibración del color.
+        </div>
+        <div id="errorBox" class="error" role="alert"></div>
+      </section>
+
+      <section class="results-panel" aria-label="Comparación RAL">
+        <div class="results-heading">
+          <div>
+            <p class="eyebrow">Comparación</p>
+            <h2>Coincidencias RAL</h2>
+          </div>
+          <div class="source-pill">Referencia basada en RAL Classic</div>
+        </div>
+
+        <div id="bestMatchCard" class="best-match-card"></div>
+
+        <div class="results-list-wrap">
+          <div class="results-list-header">
+            <span>Top 3 coincidencias</span>
+            <span>ΔE00</span>
+          </div>
+          <div id="resultsList" class="results-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
